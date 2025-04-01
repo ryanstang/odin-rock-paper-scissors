@@ -38,18 +38,27 @@ function playRound (humanChoice, computerChoice) {
         (computerChoice === "paper" && humanChoice === "rock") ||
         (computerChoice === "scissors" && humanChoice === "paper")) {
         console.log("You lose!");
-        computerChoice += 1;
+        computerScore += 1;
     } else {
         console.log("You win!"); 
-        computerScore += 1;    
+        humanScore += 1;    
     }
 }
 
+function playGame() {
 
+    console.log("Playing 5 rounds of Rock, Paper, Scissors with the computer.")
+
+    for (let i=1; i<6; i++) {
+        const humanChoice = getHumanChoice();
+        const computerChoice = getComputerChoice();
+
+        playRound(humanChoice, computerChoice);
+
+        console.log(`Score after the first round is: Computer ${computerScore}, Player ${humanScore}`)
+    }
+}
 
 let humanScore = 0;
 let computerScore = 0;
-const humanChoice = getHumanChoice();
-const computerChoice = getComputerChoice();
-
-playRound(humanChoice, computerChoice);
+playGame();
