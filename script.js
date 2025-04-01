@@ -25,7 +25,17 @@ function getHumanChoice (){
     return humanChoice;
 }
 
-let computerChoice = getComputerChoice();
-let humanChoice = getHumanChoice();
+function playRound (humanChoice, computerChoice) {
+    humanChoice.toLowerCase();
+    computerChoice.toLowerCase();
+
+    if (computerChoice === humanChoice){
+        console.log("It is a tie! Try again.");
+    // todo: finish rest of playRound function
+    } else if (computerChoice === "rock" && humanChoice === )
+}
+
+
+
 let humanScore = 0;
 let computerScore = 0;
