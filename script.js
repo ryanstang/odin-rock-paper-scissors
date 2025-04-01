@@ -13,5 +13,17 @@ function getComputerChoice () {
     }
 }
 
+function getHumanChoice (){
+    let humanChoice = prompt("What's your choice? (Rock, Paper, Scissors)");
+
+    // check if valid input from user
+    if (humanChoice === "" || !["rock", "paper", "scissors"].includes(humanChoice.toLowerCase())) {
+        console.log("Invalid input from user. Assigning 'Rock'.")
+        humanChoice = "Rock";
+    }
+
+    return humanChoice;
+}
+
 let computerChoice = getComputerChoice();
-console.log(computerChoice);
+let humanChoice = getHumanChoice();
