@@ -26,16 +26,30 @@ function getHumanChoice (){
 }
 
 function playRound (humanChoice, computerChoice) {
-    humanChoice.toLowerCase();
-    computerChoice.toLowerCase();
+    humanChoice = humanChoice.toLowerCase();
+    computerChoice = computerChoice.toLowerCase();
+
+    console.log(`You chose ${humanChoice}. Computer chose ${computerChoice}.`);
 
     if (computerChoice === humanChoice){
-        console.log("It is a tie! Try again.");
+        console.log("It is a tie!");
     // todo: finish rest of playRound function
-    } else if (computerChoice === "rock" && humanChoice === )
+    } else if ((computerChoice === "rock" && humanChoice === "scissors") ||
+        (computerChoice === "paper" && humanChoice === "rock") ||
+        (computerChoice === "scissors" && humanChoice === "paper")) {
+        console.log("You lose!");
+        computerChoice += 1;
+    } else {
+        console.log("You win!"); 
+        computerScore += 1;    
+    }
 }
 
 
 
 let humanScore = 0;
 let computerScore = 0;
+const humanChoice = getHumanChoice();
+const computerChoice = getComputerChoice();
+
+playRound(humanChoice, computerChoice);
