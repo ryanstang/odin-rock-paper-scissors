@@ -47,16 +47,25 @@ function playRound (humanChoice, computerChoice) {
 
 function playGame() {
 
-    console.log("Playing 5 rounds of Rock, Paper, Scissors with the computer.")
+    // console.log("Playing 5 rounds of Rock, Paper, Scissors with the computer.")
 
-    for (let i=1; i<6; i++) {
-        const humanChoice = getHumanChoice();
+    // for (let i=1; i<6; i++) {
+    //     const humanChoice = getHumanChoice();
+    //     const computerChoice = getComputerChoice();
+
+    //     playRound(humanChoice, computerChoice);
+
+    //     console.log(`Score after the first round is: Computer ${computerScore}, Player ${humanScore}`)
+    // }
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach ((button) => {
         const computerChoice = getComputerChoice();
+        const humanChoice = button.textContent;
 
         playRound(humanChoice, computerChoice);
-
-        console.log(`Score after the first round is: Computer ${computerScore}, Player ${humanScore}`)
     }
+
+    )
 }
 
 let humanScore = 0;
