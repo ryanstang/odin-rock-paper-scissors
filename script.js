@@ -31,18 +31,32 @@ function playRound (humanChoice, computerChoice) {
 
     console.log(`You chose ${humanChoice}. Computer chose ${computerChoice}.`);
 
+    let context;
+
     if (computerChoice === humanChoice){
-        console.log("It is a tie!");
-    // todo: finish rest of playRound function
+        context = "It is a tie!";
     } else if ((computerChoice === "rock" && humanChoice === "scissors") ||
         (computerChoice === "paper" && humanChoice === "rock") ||
         (computerChoice === "scissors" && humanChoice === "paper")) {
-        console.log("You lose!");
+        context = "You lose!";
         computerScore += 1;
     } else {
-        console.log("You win!"); 
+        context = "You win!"; 
         humanScore += 1;    
     }
+    showRoundWinner(context);
+}
+
+function showRoundWinner(context) {
+    const scoreDiv = document.getElementById("score");
+
+    const roundWinnerDiv = document.createElement('div');
+    roundWinnerDiv.textContent = `Round #${round}: ${context}`;
+    round += 1;
+    roundWinnerDiv.className = "roundWinner";
+
+    scoreDiv.insertAdjacentElement('beforebegin', roundWinnerDiv);
+
 }
 
 function playGame() {
@@ -59,10 +73,12 @@ function playGame() {
     // }
     const buttons = document.querySelectorAll('button');
     buttons.forEach ((button) => {
-        const computerChoice = getComputerChoice();
-        const humanChoice = button.textContent;
-
-        playRound(humanChoice, computerChoice);
+        button.addEventListener('click', function () {
+            const computerChoice = getComputerChoice();
+            const humanChoice = button.textContent;
+    
+            playRound(humanChoice, computerChoice);
+        })
     }
 
     )
@@ -70,4 +86,5 @@ function playGame() {
 
 let humanScore = 0;
 let computerScore = 0;
+let round = 0;
 playGame();
