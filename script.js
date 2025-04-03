@@ -84,13 +84,37 @@ function playGame() {
             const humanChoice = button.textContent;
     
             playRound(humanChoice, computerChoice);
+
+            if (computerScore === 5 || humanScore === 5) {
+                endGame();
+                console.log("Ended game.")
+              }
         })
+    })
+}
+ 
+
+function endGame () {
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach ((button) => {
+            button.disabled = true;
+            console.log('Button is now disabled');
+    })
+    const scoreDiv = document.getElementById("score");
+
+    const winnerDiv = document.createElement('div');
+    if (computerScore === 5) {
+        winnerDiv.textContent = "Computer";
+    } else {
+        winnerDiv.textContent = "Player";
     }
 
-    )
+    winnerDiv.textContent += " has won the game. Game has ended."
+    scoreDiv.insertAdjacentElement('afterEnd', winnerDiv);
 }
 
 let humanScore = 0;
 let computerScore = 0;
 let round = 0;
+
 playGame();
