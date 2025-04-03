@@ -29,22 +29,23 @@ function playRound (humanChoice, computerChoice) {
     humanChoice = humanChoice.toLowerCase();
     computerChoice = computerChoice.toLowerCase();
 
+    let context = `You chose ${humanChoice}. Computer chose ${computerChoice}. `;
+
     console.log(`You chose ${humanChoice}. Computer chose ${computerChoice}.`);
 
-    let context;
-
     if (computerChoice === humanChoice){
-        context = "It is a tie!";
+        context += "It is a tie!";
     } else if ((computerChoice === "rock" && humanChoice === "scissors") ||
         (computerChoice === "paper" && humanChoice === "rock") ||
         (computerChoice === "scissors" && humanChoice === "paper")) {
-        context = "You lose!";
+        context += "You lose!";
         computerScore += 1;
     } else {
-        context = "You win!"; 
+        context += "You win!"; 
         humanScore += 1;    
     }
     showRoundWinner(context);
+    updateScore();
 }
 
 function showRoundWinner(context) {
@@ -57,6 +58,11 @@ function showRoundWinner(context) {
 
     scoreDiv.insertAdjacentElement('beforebegin', roundWinnerDiv);
 
+}
+
+function updateScore () {
+    const scoreDiv = document.getElementById("score");
+    scoreDiv.textContent = `Score: Computer ${computerScore}, Player ${humanScore}`;
 }
 
 function playGame() {
